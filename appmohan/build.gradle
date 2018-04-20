@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "mohan.com.androidwhitelabel"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "app"
+    productFlavors {
+        cartoon {
+            dimension "app"
+            applicationId "com.appmohan.cartoon"
+            versionName '1.0.1'
+            versionCode 1
+            minSdkVersion 21
+            targetSdkVersion 27
+        }
+        disney {
+            dimension "app"
+            applicationId "com.appmohan.disney"
+            versionName "1.0.1"
+            versionCode 1
+            minSdkVersion 21
+            targetSdkVersion 27
+        }
+        pogo {
+            dimension "app"
+            applicationId "com.appmohan.pogo"
+            versionName "1.0.1"
+            versionCode 1
+            minSdkVersion 21
+            targetSdkVersion 27
+        }
+    }
+
+
+    android.buildTypes {
+        debug {
+            //do our url stuff
+        }
+        /*stagging {
+            //do our url stuff
+        }
+        release {
+            //do our url stuff
+        }*/
+    }
+
+    sourceSets.cartoon{
+        res.srcDirs = ['res', 'src/cartoon/res']
+    }
+    sourceSets.disney{
+        res.srcDirs = ['res', 'src/disney/res']
+    }
+    sourceSets.pogo{
+        res.srcDirs = ['res', 'src/pogo/res']
+    }
+
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
